@@ -1,1 +1,1 @@
-# b-and-b-app
+# mern auth with admin dashboard
