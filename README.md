@@ -15,3 +15,21 @@ https://aakash-mern-auth.herokuapp.com/api/signup
 ```
 https://aakash-mern-auth.herokuapp.com/api/getAll
 ```
+
+#### For Admin Login
+
+```
+email : aakash@gmail.com
+```
+```
+password : aakash1234
+```
+
+```
+{
+  "name": "Aakash",
+  "email": "aakash@gmail.com",
+  "password": "aakash1234",
+  "isAdmin": true
+}
+```
