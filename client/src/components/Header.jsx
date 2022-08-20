@@ -3,8 +3,6 @@ import {
   AppBar,
   Box,
   Button,
-  Tab,
-  Tabs,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -13,7 +11,7 @@ import { useCookies } from "react-cookie";
 
 const Header = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-
+  // console.log(cookies);
   return (
     <div>
       <AppBar position="sticky">
@@ -22,14 +20,40 @@ const Header = () => {
           <Box sx={{ marginLeft: "auto" }}>
             {cookies.user ? (
               <Button onClick={() => removeCookie("user")}>
-                <Link to="/">Logout</Link>
+                <Link
+                  to="/"
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontFamily: "sans-serif",
+                  }}
+                >
+                  Logout
+                </Link>
               </Button>
             ) : (
               <>
-                <Link to="/login" style={{ marginRight: 10 }}>
+                <Link
+                  to="/login"
+                  style={{
+                    marginRight: 10,
+                    textDecoration: "none",
+                    color: "white",
+                    fontFamily: "sans-serif",
+                  }}
+                >
                   Login
                 </Link>
-                <Link to="/signup">Signup</Link>
+                <Link
+                  to="/signup"
+                  style={{
+                    textDecoration: "none",
+                    color: "white",
+                    fontFamily: "sans-serif",
+                  }}
+                >
+                  Signup
+                </Link>
               </>
             )}
           </Box>

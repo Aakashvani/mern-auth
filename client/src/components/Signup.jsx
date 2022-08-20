@@ -1,8 +1,11 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [form, setForm] = useState();
+
+  const navigate = useNavigate();
 
   const handleForm = (e) => {
     const { id, value } = e.target;
@@ -32,14 +35,17 @@ const Signup = () => {
       });
 
       let data = await res.json();
-      console.log(data)
+      // console.log(data);
+      // console.log(res.status);
 
-      if(data.message){
-        return alert(data.message)
+      if (res.status == 201) {
+        console.log("first");
+        alert(data.message);
+        navigate("/login");
+        console.log("second");
+      } else {
+        alert(data.message);
       }
-
-    //   data.
-
     } catch (error) {
       console.log(error);
     }

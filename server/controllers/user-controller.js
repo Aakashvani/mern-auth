@@ -35,11 +35,12 @@ const signup = async (req, res, next) => {
     console.log(error);
   }
 
-  return res.status(201).json({ message: user });
+  return res.status(201).json({ message: "Register successfully", user: user });
 };
 
 //User LogIn
 const login = async (req, res, next) => {
+  
   const { email, password } = req.body;
 
   let existingUser;
@@ -123,10 +124,12 @@ const getUser = async (req, res, next) => {
 //   }
 // };
 
-const getAllUser =async (req, res, next) =>  {
+const getAllUser = async (req, res, next) => {
   try {
-    const user = await User.find({isAdmin:'false'},{password:false}).lean().exec();
-    console.log('hello')
+    const user = await User.find({ isAdmin: "false" }, { password: false })
+      .lean()
+      .exec();
+    console.log("hello");
     return res.status(200).send(user);
   } catch (err) {
     return res.status(400).send({ message: err.message });

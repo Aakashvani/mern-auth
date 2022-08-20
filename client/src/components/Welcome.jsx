@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import { useCookies } from "react-cookie";
 
 const Welcome = () => {
-  return (
-    <div>Welcome</div>
-  )
-}
+  const [cookies, setCookie] = useCookies(["user"]);
 
-export default Welcome
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        height: " 100vh",
+      }}
+    >
+      <h1>Welcome {cookies.user.name}</h1>
+    </div>
+  );
+};
+
+export default Welcome;
