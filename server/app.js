@@ -4,7 +4,6 @@ const router = require("./routes/user-routes");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 require("dotenv").config();
-const path = require('path');
 
 const app = express();
 app.use(cookieParser());
@@ -12,18 +11,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api", router);
-
-//-------------deployment --------------------
-__dirname = path.resolve();
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static("client/dist"));
-
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
-    });
-}
-//-------------deployment --------------------
-
 
 //MongoDb connection
 const PORT = process.env.PORT || 8080;
