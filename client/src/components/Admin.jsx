@@ -11,7 +11,7 @@ const Admin = () => {
   const [userList, setUserList] = useState([]);
 
   const dataGet = async () => {
-    const res = await fetch("http://localhost:8080/api/getAll");
+    const res = await fetch("https://aakash-mern-auth.herokuapp.com/api/getAll");
     const data = await res.json();
     setUserList(data);
     console.log(data);

@@ -26,7 +26,7 @@ const Signup = () => {
         };
       }
 
-      let res = await fetch("http://localhost:8080/api/signup", {
+      let res = await fetch("https://aakash-mern-auth.herokuapp.com/api/signup", {
         method: "POST",
         headers: {
           "content-type": "application/json",

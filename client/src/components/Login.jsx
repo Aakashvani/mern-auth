@@ -27,7 +27,7 @@ const Login = () => {
         };
       }
 
-      let res = await fetch("http://localhost:8080/api/login", {
+      let res = await fetch("https://aakash-mern-auth.herokuapp.com/api/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
