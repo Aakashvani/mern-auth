@@ -1,24 +1,37 @@
 import React, { useState } from "react";
-import { AppBar, Box, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  Tab,
+  Tabs,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 const Header = () => {
-  const [value, setValue] = useState();
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   return (
     <div>
-      <AppBar>
+      <AppBar position="sticky">
         <Toolbar>
           <Typography variant="h3">APP</Typography>
           <Box sx={{ marginLeft: "auto" }}>
-            <Tabs
-              indicatorColor="secondary"
-              onChange={(e, val) => setValue(val)}
-              value={value}
-              textColor="inherit"
-            >
-              <Tab label="LogIn" />
-              <Tab label="SignUp" />
-            </Tabs>
+            {cookies.user ? (
+              <Button onClick={() => removeCookie("user")}>
+                <Link to="/">Logout</Link>
+              </Button>
+            ) : (
+              <>
+                <Link to="/login" style={{ marginRight: 10 }}>
+                  Login
+                </Link>
+                <Link to="/signup">Signup</Link>
+              </>
+            )}
           </Box>
         </Toolbar>
       </AppBar>

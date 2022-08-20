@@ -81,7 +81,7 @@ const verifyToken = (req, res, next) => {
   // const cookies = req.headers.cookie;
   // const token = cookies.split("=")[1];
   // console.log(token);
-  
+
   const headers = req.headers[`authorization`];
   const token = headers.split(" ")[1];
   if (!token) {
@@ -113,7 +113,28 @@ const getUser = async (req, res, next) => {
   return res.status(200).json({ user });
 };
 
+// const getAllUser = (req, res, next) => {
+//   try {
+//     const userAll = User.find({ isAdmin: "false" });
+//     console.log(userAll);
+//     return res.status(200).send({ a: "userAll" });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+const getAllUser =async (req, res, next) =>  {
+  try {
+    const user = await User.find({isAdmin:'false'},{password:false}).lean().exec();
+    console.log('hello')
+    return res.status(200).send(user);
+  } catch (err) {
+    return res.status(400).send({ message: err.message });
+  }
+};
+
 exports.signup = signup;
 exports.login = login;
 exports.verifyToken = verifyToken;
 exports.getUser = getUser;
+exports.getAllUser = getAllUser;
