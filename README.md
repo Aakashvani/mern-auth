@@ -1,6 +1,6 @@
 # mern auth with admin dashboard
 
-Deployed Link :- https://mern-auth-pjzz180c6-aakashvani.vercel.app/
+Deployed Link :- https://mern-auth-aakashvani.vercel.app/
 
 Backend Api :- https://aakash-mern-auth.herokuapp.com/api
 
